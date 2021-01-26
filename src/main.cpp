@@ -9,6 +9,8 @@
 
 #include "config.h"
 
+#include "clipboardtray.h"
+
 #include <QApplication>
 #include <QDebug>
 
@@ -17,9 +19,12 @@ int main(int argc, char *argv[])
     QApplication app(argc,argv);
     
     app.setApplicationName(PROJECT_NAME);
-    app.setApplicationVersion(PROJECT_VER);
+    app.setApplicationVersion(PROJECT_VERSION);
     app.setOrganizationName("adjam");
     app.setOrganizationDomain("adjam.org");
-    
+
+    ClipboardTray cbt;
+    cbt.show();
+
     return app.exec();
 }
