@@ -23,6 +23,9 @@ class ClipboardManager : public QObject
 public:
     ClipboardManager (QObject *parent = nullptr);
 
+private:
+    void addContent(const QString & text;
+
 private Q_SLOTS:
     void dataChanged(QClipboard::Mode mode);
 

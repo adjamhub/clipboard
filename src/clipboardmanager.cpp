@@ -45,19 +45,34 @@ void ClipboardManager::dataChanged(QClipboard::Mode mode)
         return;
     }
 
+    // TODO: improve mime data support
     if (!mimeData->hasText()) {
         return;
     }
 
     QString text = mimeData->text();
-    qDebug() << "clip text:" << _clip->text();
-    qDebug() << "mime text:" << text;
+    addContent(text);
 
-    _contents << text;
-    qDebug() << "contents: " << _contents;
-    qDebug() << "------------------------";
+    // reload on the clipboard
     QMimeData *mime = new QMimeData();
     mime->setText(text);
     _guard = false;
     _clip->setMimeData(mime, mode);
+}
+
+
+void ClipboardManager::addContent(const QString & text)
+{
+    if (!_content.contains(text)) {
+        _content.append(text);
+
+        if (_content.count() >= 10) {
+            _content.removeFirst();
+        }
+
+        return;
+    }
+
+    _content.removeOne(text);
+    _content.append(text);
 }
