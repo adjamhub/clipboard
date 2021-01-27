@@ -12,6 +12,8 @@
 #include "clipboardtray.h"
 
 #include <QApplication>
+#include <QIcon>
+
 #include <QDebug>
 
 int main(int argc, char *argv[])
@@ -22,6 +24,9 @@ int main(int argc, char *argv[])
     app.setApplicationVersion(PROJECT_VERSION);
     app.setOrganizationName("adjam");
     app.setOrganizationDomain("adjam.org");
+
+    app.setQuitOnLastWindowClosed(false);
+    app.setWindowIcon( QIcon::fromTheme("edit-copy") );
 
     ClipboardTray cbt;
     cbt.show();

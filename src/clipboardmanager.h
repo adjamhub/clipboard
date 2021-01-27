@@ -12,6 +12,8 @@
 
 
 #include <QObject>
+#include <QClipboard>
+#include <QStringList>
 
 
 class ClipboardManager : public QObject
@@ -20,6 +22,14 @@ class ClipboardManager : public QObject
 
 public:
     ClipboardManager (QObject *parent = nullptr);
+
+private Q_SLOTS:
+    void dataChanged(QClipboard::Mode mode);
+
+private:
+    QClipboard* _clip;
+    bool _guard;
+    QStringList _contents;
 };
 
 
