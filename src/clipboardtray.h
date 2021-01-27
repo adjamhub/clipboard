@@ -26,7 +26,7 @@ public:
     ~ClipboardTray();
 
 private:
-    void loadContextMenu();
+    void setupContextMenu();
 
 private Q_SLOTS:
     void showSettings();

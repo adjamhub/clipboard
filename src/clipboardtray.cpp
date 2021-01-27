@@ -25,7 +25,7 @@ ClipboardTray::ClipboardTray (QObject *parent)
     
     setToolTip("clipboard");
     
-    loadContextMenu();
+    setupContextMenu();
 }
 
 
@@ -35,17 +35,17 @@ ClipboardTray::~ClipboardTray()
 }
 
 
-void ClipboardTray::loadContextMenu()
+void ClipboardTray::setupContextMenu()
 {
-    QAction* actionShowSettings = new QAction("Settings", this);
+    QAction* actionShowSettings = new QAction( QIcon::fromTheme("settings-configure"), "Settings", this);
     connect(actionShowSettings, &QAction::triggered, this, &ClipboardTray::showSettings);
     _contextMenu->addAction(actionShowSettings);
 
-    QAction* actionAboutApp = new QAction("About", this );
+    QAction* actionAboutApp = new QAction( QIcon::fromTheme("help-about"), "About", this );
     connect(actionAboutApp, &QAction::triggered, this, &ClipboardTray::aboutApp);
     _contextMenu->addAction(actionAboutApp);
 
-    QAction* actionQuit = new QAction("Quit", this );
+    QAction* actionQuit = new QAction( QIcon::fromTheme("application-exit"), "Quit", this );
     connect(actionQuit, &QAction::triggered, qApp, &QApplication::quit, Qt::QueuedConnection);
     _contextMenu->addAction(actionQuit);
 

@@ -63,16 +63,16 @@ void ClipboardManager::dataChanged(QClipboard::Mode mode)
 
 void ClipboardManager::addContent(const QString & text)
 {
-    if (!_content.contains(text)) {
-        _content.append(text);
+    if (!_contents.contains(text)) {
+        _contents.append(text);
 
-        if (_content.count() >= 10) {
-            _content.removeFirst();
+        if (_contents.count() >= 10) {
+            _contents.removeFirst();
         }
 
         return;
     }
 
-    _content.removeOne(text);
-    _content.append(text);
+    _contents.removeOne(text);
+    _contents.append(text);
 }
